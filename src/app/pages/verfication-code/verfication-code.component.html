@@ -1,17 +1,13 @@
-<!-- <lottie-player src="99592.json" background="transparent" speed="1" style="width: 240px; height: 240px;" loop autoplay></lottie-player> -->
-
-<router-outlet></router-outlet>
 <ng-template #content let-c="close" let-d="dismiss">
 	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Hi there!</h4>
 		<button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
 	</div>
 	<div class="modal-body">
-        <code-input 
+        <code-input [isCodeHidden]="true"
         [codeLength]="4"
         (codeChanged)="onCodeChanged($event)"
-        (codeCompleted)="onCodeCompleted($event)"
-        [isCodeHidden]="false"
-        >
+        (codeCompleted)="onCodeCompleted($event)">
 </code-input>
 	</div>
 	<div class="modal-footer">
@@ -19,4 +15,5 @@
 	</div>
 </ng-template>
 
-<button class="btn btn-lg btn-outline-primary" (click)="open()">Launch demo modal</button>
+
+<h1>jjjjjjjjjjjjj</h1>
