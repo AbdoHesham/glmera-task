@@ -3,13 +3,21 @@ import { RouterModule, Routes } from '@angular/router';
 import { SuccessPageComponent } from './shared/components/success-page/success-page.component';
 
 const routes: Routes = [
-  // {path:'' , component:SuccessPageComponent},
+  { path: '', redirectTo: 'auth', pathMatch: 'full' },
+
   {
-    path: '',
+    path: 'success',
     loadChildren: () =>   
    import('./shared/shared.module')
     .then(m => m.SharedModule)
  } ,
+ {
+  path: 'auth',
+  loadChildren: () =>   
+ import('./pages/auth/auth.module')
+  .then(m => m.AuthModule)
+} ,
+ 
 ];
 
 @NgModule({

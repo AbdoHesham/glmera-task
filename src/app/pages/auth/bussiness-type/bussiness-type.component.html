@@ -1,0 +1,40 @@
+<p>bussiness-type works!</p>
+
+
+
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <button
+        type="button"
+        class="btn-close"
+        aria-label="Close"
+        (click)="d('Cross click')"
+      ></button>
+    </div>
+    <div class="modal-body">
+      <div class="text-center">
+        <img
+          src="../assets/images/Group 14.svg"
+          style="margin-bottom: 32px"
+          alt="verify code img"
+        />
+        <p class="head">Verification Code</p>
+        <p class="desc">
+          Please enter the verification code sent to your phone number ** 34
+        </p>
+      </div>
+      <code-input
+        [codeLength]="4"
+        (codeChanged)="onCodeChanged($event)"
+        (codeCompleted)="onCodeCompleted($event)"
+        [isCodeHidden]="false"
+      >
+      </code-input>
+      <p class="text-timer">
+        The code will be sent again within <span>{{ seconds }} </span> seconds
+      </p>
+      <div class="text-center">
+        <button class="verify">VERIFY</button>
+      </div>
+    </div>
+  </ng-template>

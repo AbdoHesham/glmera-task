@@ -1,0 +1,29 @@
+::ng-deep code-input span input {
+    width: 88px !important;
+    height: 48px !important;
+    margin-top: 48px;
+    margin-bottom: 30px;
+  }
+  ::ng-deep.modal-content {
+    width: 464px !important;
+    height: 592px !important;
+    padding-inline: 32px !important;
+  }
+  .modal-header {
+    border-bottom: 0 !important;
+  }
+  .modal-body {
+  }
+  
+  button.verify {
+    width: 176px;
+    height: 48px;
+    background: #635ca8 0% 0% no-repeat padding-box;
+    border-radius: 4px;
+    opacity: 1;
+    border: none;
+    outline: none;
+    color: #fff;
+    margin-block: 40px;
+  }
+  

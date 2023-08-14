@@ -1,4 +1,60 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* Importing Bootstrap SCSS file. */
-@import 'bootstrap/scss/bootstrap';
+@import "bootstrap/scss/bootstrap";
+
+.head {
+  font-family: "Poppins", sans-serif;
+  // font-family: normal normal 600 24px/24px Poppins;
+  font-weight: 600;
+  letter-spacing: 0px;
+  font-size: 24px;
+  color: #454c66;
+  text-transform: capitalize;
+  opacity: 1;
+}
+.desc {
+  font-family: "Poppins", sans-serif;
+  font-weight: normal;
+  letter-spacing: 0px;
+  color: #747a88;
+  opacity: 1;
+  font-size: 16px;
+  line-height: 11px;
+}
+p.desc {
+  font-family: "Poppins", sans-serif;
+  font-weight: normal;
+  letter-spacing: 0px;
+  color: #747a88;
+  opacity: 1;
+  font-size: 16px;
+  line-height: unset;
+  margin-bottom: 0;
+}
+// p.desc-signup {
+//   font-family: "Poppins", sans-serif;
+//   font-weight: normal;
+//   letter-spacing: 0px;
+//   color: #747a88;
+//   opacity: 1;
+//   font-size: 16px;
+//   line-height: unset;
+//   margin-bottom: 0;
+//   padding-right: 154px;
+// }
+
+p.text-timer {
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-weight: normal;
+  letter-spacing: 0px;
+  font-size: 14px;
+  color: #747a88;
+  margin-bottom: 0;
+  span {
+    color: #6ac7bb;
+    font-size: 16px;
+    font-weight: bold;
+  }
+}
