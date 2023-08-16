@@ -5,6 +5,7 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { SignupComponent } from './signup/signup.component';
 import { BussinessTypeComponent } from './bussiness-type/bussiness-type.component';
 import { CodeInputModule } from 'angular-code-input';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,7 +16,9 @@ import { CodeInputModule } from 'angular-code-input';
   imports: [
     CommonModule,
     AuthRoutingModule,
-    CodeInputModule
+    CodeInputModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class AuthModule { }

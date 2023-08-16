@@ -1,40 +1,242 @@
-<p>bussiness-type works!</p>
-
-
-
-<ng-template #content let-c="close" let-d="dismiss">
-    <div class="modal-header">
-      <button
-        type="button"
-        class="btn-close"
-        aria-label="Close"
-        (click)="d('Cross click')"
-      ></button>
+<div class="body">
+  <div class="row" style="height: 800px">
+    <!--     <div class="col-md-4 d-sm-none d-md-block left-side">
+ -->
+    <div class="col-md-4 d-none d-md-block left-side">
+      <!-- <img src="../../../../assets/images/asdsdsadsadasdasd.png" width="100%" height="100%" alt="" /> -->
     </div>
-    <div class="modal-body">
-      <div class="text-center">
-        <img
-          src="../assets/images/Group 14.svg"
-          style="margin-bottom: 32px"
-          alt="verify code img"
-        />
-        <p class="head">Verification Code</p>
-        <p class="desc">
-          Please enter the verification code sent to your phone number ** 34
+    <div class="col-sm-12 col-md-8 right-side">
+      <div class="help">
+        <p class="text-right">
+          Having troubles? <span><a>Get Help</a></span>
         </p>
       </div>
-      <code-input
-        [codeLength]="4"
-        (codeChanged)="onCodeChanged($event)"
-        (codeCompleted)="onCodeCompleted($event)"
-        [isCodeHidden]="false"
-      >
-      </code-input>
-      <p class="text-timer">
-        The code will be sent again within <span>{{ seconds }} </span> seconds
-      </p>
-      <div class="text-center">
-        <button class="verify">VERIFY</button>
+      <div class="row">
+        <div class="form">
+          <img src="../../../../assets/images/Group 15.svg" (click)="back()" width="24px" height="24px" style="margin-bottom: 24px;" alt="">
+          <p class="head">Choose the type of business</p>
+          <p class="desc">
+            To get start tell us what type of Business you are going to
+          </p>
+          <p class="desc">incorporate and name</p>
+          <form style="margin-top: 48px" [formGroup]="form">
+            <div class="row">
+              <div class="col-md-6" style="margin-bottom: 24px">
+                <div class="form-group">
+                  <label for="FirstName" style="margin-bottom: 8px"
+                    >First Name</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="FirstName"
+                    placeholder="Enter your first Name"
+                    style="
+                      border: 1px solid #b4ace5;
+                      border-radius: 4px;
+                      opacity: 1;
+                    "
+                    formControlName="firstName"
+                  />
+                  <div
+                    style="text-align: end"
+                    *ngIf="
+                      form.get('firstName')?.touched &&
+                      form.get('firstName')?.errors
+                    "
+                  >
+                    <small class="error"> Please enter letters only </small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6" style="margin-bottom: 24px">
+                <div class="form-group">
+                  <label for="LastName" style="margin-bottom: 8px"
+                    >Last Name</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="LastName"
+                    placeholder="Enter your last Name"
+                    style="
+                      border: 1px solid #b4ace5;
+                      border-radius: 4px;
+                      opacity: 1;
+                    "
+                    formControlName="lastName"
+                  />
+                  <div
+                    style="text-align: end"
+                    *ngIf="
+                      form.get('lastName')?.touched &&
+                      form.get('lastName')?.errors
+                    "
+                  >
+                    <small class="error"> Please enter letters only </small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6" style="margin-bottom: 24px">
+                <div class="form-group">
+                  <label for="email" style="margin-bottom: 8px"
+                    >Email address</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="email"
+                    placeholder="Enter your email"
+                    style="
+                      border: 1px solid #b4ace5;
+                      border-radius: 4px;
+                      opacity: 1;
+                    "
+                    formControlName="email"
+                  />
+                  <div
+                    style="text-align: end"
+                    *ngIf="
+                      form.get('email')?.touched && form.get('email')?.errors
+                    "
+                  >
+                    <small class="error">
+                      Please enter a vaild email address
+                    </small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6" style="margin-bottom: 24px">
+                <div class="form-group">
+                  <label for="FirstName" style="margin-bottom: 8px"
+                    >Phone Number</label
+                  >
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span
+                        class="input-group-text"
+                        id="basic-addon1"
+                        style="width: 72px; height: 48px"
+                      >
+                        <img
+                          src="../../../../assets/images/Group 36931.png"
+                          alt=""
+                          srcset=""
+                        />
+                        <p class="flag-key">+966</p>
+                      </span>
+                    </div>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Enter your Phone"
+                      style="
+                        border: 1px solid #b4ace5;
+                        border-radius: 4px;
+                        opacity: 1;
+                      "
+                      formControlName="mobileNumber"
+                      aria-label="Username"
+                      aria-describedby="basic-addon1"
+                    />
+                  </div>
+                  <div
+                    style="text-align: end"
+                    *ngIf="
+                      form.get('mobileNumber')?.touched &&
+                      form.get('mobileNumber')?.errors
+                    "
+                  >
+                    <small class="error">
+                      Please enter a valid phone number
+                    </small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6" style="margin-bottom: 24px">
+                <div class="form-group">
+                  <label for="password" style="margin-bottom: 8px"
+                    >Password</label
+                  >
+                  <div style="position: relative">
+                    <input
+                      [type]="showPass ? 'text' : 'password'"
+                      class="form-control"
+                      id="password"
+                      placeholder="Enter your Password"
+                      style="
+                        border: 1px solid #b4ace5;
+                        border-radius: 4px;
+                        opacity: 1;
+                      "
+                      formControlName="password"
+                    />
+                    <img
+                      src="../../../../assets/images/Group 8.svg"
+                      style="
+                        position: absolute;
+                        top: 12px;
+                        right: 15px;
+                        cursor: pointer;
+                      "
+                      alt=""
+                      (click)="showPass = !showPass"
+                    />
+                  </div>
+                  <div
+                    style="text-align: end"
+                    *ngIf="
+                      form.get('password')?.touched &&
+                      form.get('password')?.errors
+                    "
+                  >
+                    <small class="error">
+                      Please enter 8 digits of A,a,12,!@
+                    </small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6" style="margin-bottom: 24px">
+                <div class="form-group">
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      value=""
+                      id="flexCheckChecked"
+                      formControlName="termsAccept"
+
+                      (change)="changeCheck()"
+
+                    />
+                    <label
+                      class="form-check-label terms"
+                      for="flexCheckChecked"
+                    >
+                      Agree to the <span>Privacy Policy</span> and
+                      <span>Terms & Conditions</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="col-md-6"
+                style="margin-bottom: 24px; text-align: end;    display: flex;
+                justify-content: flex-end;"
+              >
+              <button class="custom-btn" [disabled]="form.invalid" (click)="save()">CREATE ACCOUNT <img src="../../../../assets/images/Group 2.svg" alt=""></button>
+            </div>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
-  </ng-template>
+  </div>
+</div>

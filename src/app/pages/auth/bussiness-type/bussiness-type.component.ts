@@ -1,63 +1,79 @@
 import { Component , ViewChild, TemplateRef, ElementRef} from '@angular/core';
 import { ModalDismissReasons, NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
-
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { InputValidation } from 'src/app/core/constants/InputValidation';
 import { map, take, timer } from 'rxjs';
 @Component({
   selector: 'app-bussiness-type',
   templateUrl: './bussiness-type.component.html',
   styleUrls: ['./bussiness-type.component.scss'],
-  providers: [NgbModalConfig, NgbModal],
 
 })
 export class BussinessTypeComponent {
   @ViewChild('content') modalContent!: TemplateRef<any>;
   date = new Date();
    seconds:any ;
+   form: FormGroup | any;
+   showPass:boolean=false
+   isChecked: boolean = false;
 
-  constructor(config: NgbModalConfig, private modalService: NgbModal){
+  constructor(config: NgbModalConfig, private modalService: NgbModal,
+    private router:Router){
 
   }
   ngOnInit(){
-    const countdown$ = timer(0, 1000).pipe(
-      take(60),
-      map(secondsElapsed => 60 - secondsElapsed)
-    );
-    
-    countdown$.subscribe(secondsLeft => {
-      this.seconds = secondsLeft;
-    });
+    this.initForm()
   }
-  open(){
-    
-    this.seconds = this.date.getSeconds();
-    console.log(this.seconds);
-		this.modalService.open(this.modalContent).result.then(
-      (result) => {
-        // Modal closed with a result
-        console.log('Modal closed:', result);
-      },
-      (reason) => {
-        // Modal dismissed
-        console.log('Modal dismissed:', this.getDismissReason(reason));
-      }
-    );
 
-  }
-  private getDismissReason(reason: any): string {
-    // Close reasons
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
+    initForm(){
+      this.form = new FormGroup(
+        {
+      firstName: new FormControl(null, [
+        Validators.required,
+        Validators.pattern(InputValidation.EnglishRegx),
+      ]),
+
+      lastName: new FormControl(null, [
+        Validators.required,
+        Validators.pattern(InputValidation.EnglishRegx),
+      ]),
+
+      email: new FormControl(null, [
+        Validators.required,
+  
+        Validators.pattern(InputValidation.email),
+      ]),
+      password: new FormControl(null, [
+        Validators.required,
+  
+        Validators.maxLength(8),
+        Validators.pattern(InputValidation.passw0rd),
+      ]),
+      mobileNumber: new FormControl(null, [
+        Validators.required,
+        Validators.pattern(InputValidation.MobileKSApattern),
+      ]),
+      termsAccept: new FormControl(null, [
+        Validators.required,
+      ]),
+    })
     }
-  }
-    // this called every time when user changed the code
-    onCodeChanged(code: string) {
+    save(){
+      this.router.navigateByUrl('/success')
     }
-    
-    // this called only if user entered full code
-    onCodeCompleted(code: string) {
+    changeCheck() {
+      console.log(this.form);
+      
+      this.isChecked = !this.isChecked;
+      if (this.isChecked == false) {
+        this.form.get('termsAccept').patchValue(null);
+      } else {
+        this.form.get('termsAccept').patchValue(true);
+      }
+    }
+    back(){
+      this.router.navigateByUrl('/auth/signup');
+
     }
 }
